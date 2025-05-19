@@ -20,7 +20,11 @@ cols = st.columns(3)
 for i, hazard in enumerate(hazards):
     with cols[i % 3]:
         if hazard["disabled"]:
-            st.badge(hazard["label"], variant="gray")
+            st.markdown(
+                    f"<span style='background-color: lightgray; color: black; padding: 4px 8px; border-radius: 10px;'>{hazard['label']}</span>",
+                    unsafe_allow_html=True
+                )
+            # st.badge(hazard["label"], variant="gray")
         else:
             if st.toggle(hazard["label"], key=hazard["label"]):
                 selected.append(hazard["label"])
